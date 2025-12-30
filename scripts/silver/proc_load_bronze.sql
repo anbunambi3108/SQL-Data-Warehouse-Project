@@ -1,3 +1,28 @@
+/*
+===============================================================================
+Stored Procedure: Load Silver Layer (Bronze -> Silver)
+===============================================================================
+Purpose
+    Transforms and loads data from the bronze schema into the silver schema.
+
+Behavior
+    - Truncates the target silver tables.
+    - Applies cleansing and transformation logic.
+    - Inserts the resulting data into silver tables.
+
+Parameters
+    None.
+
+Notes
+    This procedure performs a full refresh of the silver layer. Existing data
+    will be removed before new data is inserted. Run only after the bronze
+    layer has been successfully populated.
+
+Usage
+    EXEC silver.load_silver;
+===============================================================================
+*/
+
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
 	DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME; 
