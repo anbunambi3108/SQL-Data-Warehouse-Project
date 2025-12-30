@@ -1,3 +1,28 @@
+/*
+===============================================================================
+Quality Checks
+===============================================================================
+Purpose
+    Validates data quality in the silver layer, with a focus on consistency,
+    correctness, and standardization.
+
+Checks Performed
+    - Null or duplicate primary keys.
+    - Leading or trailing whitespace in string columns.
+    - Standardization and value consistency.
+    - Invalid date ranges or chronological inconsistencies.
+    - Consistency across related fields.
+
+Usage Notes
+    Run these checks after loading the silver layer. Any anomalies identified
+    should be reviewed and corrected before downstream consumption.
+
+-- Quality checks for silver.crm_cust_info
+-- Primary key validation
+-- Expectation: no rows returned
+===============================================================================
+*/
+
 
 SELECT 
     cst_id,
