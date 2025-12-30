@@ -1,3 +1,20 @@
+/*
+===============================================================================
+DDL Script: Create Silver Tables
+===============================================================================
+Purpose
+    Defines the table structures in the silver schema.
+
+Behavior
+    - Drops existing silver tables if they exist.
+    - Recreates the tables using the current DDL definitions.
+
+Notes
+    Run this script when you need to reset or update the silver layer table
+    structures. Dropping tables will remove any data currently stored in them.
+===============================================================================
+*/
+
 IF OBJECT_ID('silver.crm_cust_info', 'U') IS NOT NULL
     DROP TABLE silver.crm_cust_info;
 GO
