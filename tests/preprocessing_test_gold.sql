@@ -1,3 +1,28 @@
+/*
+===============================================================================
+Gold Layer Quality Checks
+===============================================================================
+Script Purpose
+    Validates key integrity and dimensional connectivity in the gold layer.
+
+    This script performs three checks:
+    1) Ensures customer_key is unique in gold.dim_customers.
+    2) Ensures product_key is unique in gold.dim_products.
+    3) Verifies that every row in gold.fact_sales has matching records in
+       gold.dim_customers and gold.dim_products.
+
+Usage
+    Run this script after creating or refreshing the gold layer views/tables,
+    and after any changes to the silver-to-gold transformation logic.
+
+Interpretation
+    - The duplicate key checks should return no rows. Any output indicates
+      key collisions that must be investigated.
+    - The connectivity check should return no rows. Any output indicates
+      orphaned fact rows where the referenced customer or product does not
+      exist in the corresponding dimension.
+===============================================================================
+*/
 SELECT 
     customer_key,
     COUNT(*) AS duplicate_count
